@@ -1,6 +1,6 @@
 import Navbar from '@/components/Navbar';
-import HeroSection from '@/app/(home)/_components/HeroSection';
-import AboutSection from '@/app/(home)/_components/AboutSection';
+import Hero from '@/app/(home)/_components/Hero';
+import About from '@/app/(home)/_components/About';
 import ProjectsSection from '@/app/(home)/_components/ProjectsSection';
 import SkillsSection from '@/app/(home)/_components/SkillsSection';
 import EducationSection from '@/app/(home)/_components/EducationSection';
@@ -9,17 +9,15 @@ import ContactSection from '@/app/(home)/_components/ContactSection';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen overflow-x-hidden">
       <Navbar />
-      <HeroSection />
-      <AboutSection />
+      <Hero />
+      <About />
       <ProjectsSection />
       <SkillsSection />
       <EducationSection />
       <WorkExperienceSection />
       <ContactSection />
-
-      {/* Footer */}
       <footer className="py-8 text-center border-t border-border">
         <p className="text-muted-foreground text-sm">
           © 2024 Arafa N. All rights reserved.

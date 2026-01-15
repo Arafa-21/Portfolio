@@ -84,6 +84,16 @@ const MotionP = React.forwardRef<HTMLParagraphElement, HTMLMotionProps<"p">>(
     }
 );
 
+const MotionSpan = React.forwardRef<HTMLSpanElement, HTMLMotionProps<"span">>(
+    function MotionSpan({ children, ...props }, ref) {
+        return (
+            <motion.span ref={ref} {...props}>
+                {children}
+            </motion.span>
+        );
+    }
+);
+
 
 const MotionFooter = React.forwardRef<HTMLElement, HTMLMotionProps<"footer">>(
     function MotionFooter({ children, ...props }, ref) {
@@ -114,6 +124,7 @@ export {
     MotionH1,
     MotionH2,
     MotionH3,
+    MotionSpan,
     MotionP,
     MotionFooter,
     MotionLi

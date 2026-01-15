@@ -1,13 +1,6 @@
-"use client"
+import { MotionDiv } from '@/components/Framer';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-
-const AboutSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
+export default function About() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -23,66 +16,62 @@ const AboutSection = () => {
     visible: { opacity: 1, scale: 1 },
   };
 
-  // You can place this above your component or in a separate file and import it
   const workSamples = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1581092333211-5a45e9b6b6d5?auto=format&fit=crop&w=800&q=80",
+      image: "/assets/works/tpmhiring.webp",
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+      image: "/assets/works/tpmsquad.webp",
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+      image: "/assets/works/saddleup.webp",
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=800&q=80",
+      image: "/assets/works/beyondsyllabus.webp",
     },
     {
       id: 5,
-      image: "https://images.unsplash.com/photo-1537432376769-00a9c9a7a4e3?auto=format&fit=crop&w=800&q=80",
+      image: "/assets/works/tpm.webp",
     },
     {
       id: 6,
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
+      image: "/assets/works/tpmrelease.webp",
     },
   ];
 
 
   return (
-    <section id="about" ref={ref} className="relative py-20 px-6">
+    <section id="about" className="relative py-20 px-6">
       <div className="max-w-4xl mx-auto">
-        {/* Section Header */}
-        <motion.div 
+        <MotionDiv
           initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-widest">
+          <h2 className=" text-4xl md:text-5xl font-bold tracking-widest">
             <span className="text-gradient">A</span>
             <span className="text-foreground">BOUT</span>
             <span className="inline-block w-3 h-3 rounded-full bg-primary ml-2 animate-pulse" />
           </h2>
-          
+
           <div className="flex items-center justify-center gap-2 mt-6 mb-4">
             <span className="w-8 h-0.5 bg-primary" />
             <span className="w-2 h-2 rounded-full bg-primary" />
             <span className="w-8 h-0.5 bg-primary" />
           </div>
-          
+
           <h3 className="text-xl md:text-2xl font-medium text-foreground mb-6">
             Let me to Introduce myself
           </h3>
-        </motion.div>
-
-        {/* Description */}
-        <motion.div 
+        </MotionDiv>
+        <MotionDiv
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mb-12"
         >
@@ -92,33 +81,29 @@ const AboutSection = () => {
             I blend artistic flair with technical expertise and express ideas through motion and copy, blending
             creativity with technology.
           </p>
-        </motion.div>
-
-        {/* Work samples grid */}
-        <motion.div 
+        </MotionDiv>
+        <MotionDiv
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate="visible"
           className="grid grid-cols-3 gap-4 max-w-lg mx-auto"
         >
           {workSamples.map((sample) => (
-            <motion.div
+            <MotionDiv
               key={sample.id}
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
               className="aspect-square rounded-lg overflow-hidden cursor-pointer border border-border"
             >
-              <img 
-                src={sample.image} 
-                alt="Work sample" 
+              <img
+                src={sample.image}
+                alt="Work sample"
                 className="w-full h-full object-cover"
               />
-            </motion.div>
+            </MotionDiv>
           ))}
-        </motion.div>
+        </MotionDiv>
       </div>
     </section>
   );
 };
-
-export default AboutSection;
