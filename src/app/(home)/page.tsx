@@ -1,11 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/app/(home)/_components/Hero';
 import About from '@/app/(home)/_components/About';
-import ProjectsSection from '@/app/(home)/_components/ProjectsSection';
-import SkillsSection from '@/app/(home)/_components/SkillsSection';
-import EducationSection from '@/app/(home)/_components/EducationSection';
-import WorkExperienceSection from '@/app/(home)/_components/WorkExperienceSection';
-import ContactSection from '@/app/(home)/_components/ContactSection';
+import Projects from '@/app/(home)/_components/Projects';
+import Skills from '@/app/(home)/_components/Skills';
+import Education from '@/app/(home)/_components/Education';
+import Experience from '@/app/(home)/_components/Experience';
+import Contact from '@/app/(home)/_components/Contact';
 
 const Index = () => {
   return (
@@ -13,12 +13,12 @@ const Index = () => {
       <Navbar />
       <Hero />
       <About />
-      <ProjectsSection />
-      <SkillsSection />
-      <EducationSection />
-      <WorkExperienceSection />
-      <ContactSection />
-      <footer className="py-8 text-center border-t border-border">
+      <Projects />
+      <Skills />
+      <Education />
+      <Experience />
+      <Contact />
+      <footer className="py-8 text-center">
         <p className="text-muted-foreground text-sm">
           © 2024 Arafa N. All rights reserved.
         </p>

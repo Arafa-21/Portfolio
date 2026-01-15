@@ -18,14 +18,18 @@ const ContactSection = () => {
   return (
     <section id="contact" ref={ref} className="relative py-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
-        {/* Section Header */}
         <motion.h2 
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="font-heading text-4xl md:text-5xl font-bold tracking-wider text-foreground mb-4"
+          className="text-4xl md:text-5xl font-bold tracking-wider text-primary mb-4"
         >
           Let's Connect
+          <div className="flex items-center justify-center gap-2 mt-6 mb-4">
+            <span className="w-8 h-0.5 bg-primary" />
+            <span className="w-2 h-2 rounded-full bg-primary" />
+            <span className="w-8 h-0.5 bg-primary" />
+          </div>
         </motion.h2>
         
         <motion.p 
@@ -36,8 +40,6 @@ const ContactSection = () => {
         >
           Feel free to connect for collaborations and exciting IoT projects.
         </motion.p>
-
-        {/* Social Links */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -53,7 +55,7 @@ const ContactSection = () => {
               transition={{ delay: 0.4 + index * 0.1 }}
               whileHover={{ scale: 1.2, y: -5 }}
               whileTap={{ scale: 0.9 }}
-              className="w-12 h-12 rounded-full bg-secondary border border-border flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-colors"
+              className="w-12 h-12 rounded-full bg-primary border border-border flex items-center justify-center hover:border-primary hover:bg-primary/10 transition-colors"
             >
               <social.icon className="w-5 h-5 text-foreground" />
             </motion.a>

@@ -18,10 +18,14 @@ const EducationSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-[0.3em] text-foreground">
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-[0.3em] text-primary">
             EDUCATION
           </h2>
-          <div className="w-24 h-1 bg-gradient-primary mx-auto mt-4" />
+          <div className="flex items-center justify-center gap-2 mt-6 mb-4">
+            <span className="w-8 h-0.5 bg-primary" />
+            <span className="w-2 h-2 rounded-full bg-primary" />
+            <span className="w-8 h-0.5 bg-primary" />
+          </div>
         </motion.div>
 
         <motion.div 

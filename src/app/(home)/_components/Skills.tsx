@@ -15,9 +15,14 @@ const SkillsSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="font-heading text-4xl md:text-5xl font-bold tracking-[0.3em] text-foreground"
+          className="font-heading text-4xl md:text-5xl font-bold tracking-[0.3em] text-primary"
         >
           SKILLS
+          <div className="flex items-center justify-center gap-2 mt-6 mb-4">
+            <span className="w-8 h-0.5 bg-primary" />
+            <span className="w-2 h-2 rounded-full bg-primary" />
+            <span className="w-8 h-0.5 bg-primary" />
+          </div>
         </motion.h2>
         <div className="w-24 h-1 bg-gradient-primary mx-auto mt-4" />
         <p className="text-muted-foreground mt-8 max-w-xl mx-auto">

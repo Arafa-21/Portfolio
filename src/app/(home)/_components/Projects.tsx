@@ -3,6 +3,8 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 
 const ProjectsSection = () => {
   const ref = useRef(null);
@@ -55,7 +57,7 @@ const ProjectsSection = () => {
   const getSlideStyle = (index: number) => {
     const diff = index - currentIndex;
     const normalizedDiff = ((diff % projects.length) + projects.length) % projects.length;
-    
+
     if (normalizedDiff === 0) {
       return { x: 0, scale: 1, z: 30, opacity: 1, rotateY: 0 };
     } else if (normalizedDiff === 1 || normalizedDiff === -projects.length + 1) {
@@ -69,46 +71,54 @@ const ProjectsSection = () => {
   return (
     <section id="projects" ref={ref} className="relative py-20 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-[0.3em] text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-[0.3em] text-primary">
             PROJECTS
           </h2>
-          <div className="w-24 h-1 bg-gradient-primary mx-auto mt-4" />
+          <div className="flex items-center justify-center gap-2 mt-6 mb-4">
+            <span className="w-8 h-0.5 bg-primary" />
+            <span className="w-2 h-2 rounded-full bg-primary" />
+            <span className="w-8 h-0.5 bg-primary" />
+          </div>
         </motion.div>
 
-        {/* 3D Slider */}
         <div className="relative h-[400px] md:h-[450px] perspective-1000">
-          {/* Navigation Buttons */}
-          <motion.button
+          <motion.div
             whileHover={{ scale: 1.1, x: -5 }}
             whileTap={{ scale: 0.9 }}
-            onClick={prevSlide}
-            className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-secondary/80 backdrop-blur-sm border border-border flex items-center justify-center hover:border-primary transition-colors"
+            className="absolute left-0 md:left-4 top-1/2 -translate-y-1/2 z-40"
           >
-            <ChevronLeft className="w-6 h-6 text-foreground" />
-          </motion.button>
-          
-          <motion.button
+            <Button
+              size="icon"
+              variant="default"
+              onClick={prevSlide}
+            >
+              <ChevronLeft className="w-6 h-6 text-foreground" />
+            </Button>
+          </motion.div>
+          <motion.div
             whileHover={{ scale: 1.1, x: 5 }}
             whileTap={{ scale: 0.9 }}
-            onClick={nextSlide}
-            className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-40 w-12 h-12 rounded-full bg-secondary/80 backdrop-blur-sm border border-border flex items-center justify-center hover:border-primary transition-colors"
+            className="absolute right-0 md:right-4 top-1/2 -translate-y-1/2 z-40"
           >
-            <ChevronRight className="w-6 h-6 text-foreground" />
-          </motion.button>
-
-          {/* Slides Container */}
+            <Button
+              size="icon"
+              variant="default"
+              onClick={nextSlide}
+            >
+              <ChevronRight className="w-6 h-6 text-foreground" />
+            </Button>
+          </motion.div>
           <div className="relative w-full h-full flex items-center justify-center">
             {projects.map((project, index) => {
               const style = getSlideStyle(index);
               const isActive = index === currentIndex;
-              
+
               return (
                 <motion.div
                   key={project.id}
@@ -119,37 +129,22 @@ const ProjectsSection = () => {
                     rotateY: style.rotateY,
                     zIndex: style.z,
                   }}
-                  transition={{ 
-                    type: "spring", 
-                    stiffness: 300, 
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
                     damping: 30,
-                    mass: 1
+                    mass: 1,
                   }}
                   className="absolute w-[280px] md:w-[320px]"
-                  style={{ transformStyle: 'preserve-3d' }}
+                  style={{ transformStyle: "preserve-3d" }}
                 >
-                  <motion.div 
-                    whileHover={isActive ? { y: -10 } : {}}
-                    className={`relative bg-secondary rounded-2xl p-3 shadow-2xl ${isActive ? 'glow-primary' : ''}`}
-                  >
-                    {/* Gradient Border */}
-                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${project.gradient} opacity-20`} />
-                    
-                    {/* Device Frame */}
-                    <div className="relative bg-card rounded-xl overflow-hidden">
-                      {/* Screen Content */}
-                      <div className={`aspect-[4/3] flex items-center justify-center relative bg-gradient-to-br ${project.mockupBg}`}>
-                        {/* Mockup UI Elements */}
-                        <div className="absolute inset-4">
-                          {/* Header bar */}
-                          <div className="h-6 bg-foreground/10 rounded-lg mb-3 flex items-center px-2 gap-1">
-                            <div className="w-2 h-2 rounded-full bg-red-500/60" />
-                            <div className="w-2 h-2 rounded-full bg-yellow-500/60" />
-                            <div className="w-2 h-2 rounded-full bg-green-500/60" />
-                          </div>
-                          
-                          {/* Content */}
-                          <div className="space-y-2">
+                  <motion.div whileHover={isActive ? { y: -10 } : {}}>
+                    <Card className="relative overflow-hidden rounded-2xl bg-secondary shadow-2xl border-border">
+                      <CardHeader className="relative p-0">
+                        <div
+                          className={`relative aspect-[4/3] flex items-center justify-center bg-gradient-to-br ${project.mockupBg}`}
+                        >
+                          <div className="absolute inset-4 space-y-2">
                             <div className="h-8 bg-foreground/10 rounded-lg w-3/4" />
                             <div className="h-4 bg-foreground/5 rounded w-full" />
                             <div className="h-4 bg-foreground/5 rounded w-2/3" />
@@ -158,64 +153,72 @@ const ProjectsSection = () => {
                               <div className="h-12 bg-primary/10 rounded-lg" />
                             </div>
                           </div>
+                          {isActive && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.3, ease: "easeOut" }}
+                              className="absolute -bottom-4 left-1/2 -translate-x-1/2 z-10"
+                            >
+                              <Button className="rounded-full flex items-center gap-2 shadow-lg">
+                                <span>View Project</span>
+                                <ExternalLink className="w-4 h-4" />
+                              </Button>
+                            </motion.div>
+                          )}
                         </div>
-                        
-                        {/* Reflection */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent" />
-                      </div>
-                      
-                      {/* Project Info */}
-                      <div className="p-4 bg-card">
-                        <h3 className="font-heading text-lg font-bold text-foreground mb-1">{project.title}</h3>
-                        <p className="text-sm text-muted-foreground mb-3">{project.description}</p>
-                        
-                        {/* Tags */}
+                      </CardHeader>
+                      <CardContent className="p-4">
+                        <CardTitle className="text-lg font-bold mb-1">
+                          {project.title}
+                        </CardTitle>
+
+                        <CardDescription className="text-sm mb-3">
+                          {project.description}
+                        </CardDescription>
+
                         <div className="flex flex-wrap gap-2">
                           {project.tags.map((tag) => (
-                            <span key={tag} className="px-2 py-0.5 text-xs bg-secondary rounded-full text-muted-foreground border border-border">
+                            <span
+                              key={tag}
+                              className="px-2 py-0.5 text-xs rounded-full border border-border bg-secondary text-muted-foreground"
+                            >
                               {tag}
                             </span>
                           ))}
                         </div>
-                      </div>
-                    </div>
-
-                    {/* View Project Button - Only on active */}
-                    {isActive && (
-                      <motion.button
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-gradient-primary rounded-full text-primary-foreground text-sm font-medium flex items-center gap-2 shadow-lg"
-                      >
-                        <span>View Project</span>
-                        <ExternalLink className="w-4 h-4" />
-                      </motion.button>
-                    )}
+                      </CardContent>
+                    </Card>
                   </motion.div>
                 </motion.div>
               );
             })}
           </div>
 
-          {/* Slide Indicators */}
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-2">
-            {projects.map((_, index) => (
-              <motion.button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                whileHover={{ scale: 1.2 }}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentIndex 
-                    ? 'bg-primary w-6' 
-                    : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
-                }`}
-              />
-            ))}
+            {projects.map((_, index) => {
+              const isActive = index === currentIndex;
+              return (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.2 }}
+                  className="flex items-center"
+                >
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => setCurrentIndex(index)}
+                    className={`h-2 rounded-full p-0 transition-all ${isActive
+                      ? "w-6 bg-primary hover:bg-primary"
+                      : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"}`}
+                  />
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
-        {/* Project Tags */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -228,7 +231,7 @@ const ProjectsSection = () => {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.5 + index * 0.1 }}
               whileHover={{ scale: 1.1, y: -2 }}
-              className="px-4 py-1.5 text-sm border border-primary/30 rounded-full text-muted-foreground hover:border-primary hover:text-primary hover:bg-primary/5 transition-all cursor-pointer"
+              className="px-4 py-1.5 text-sm border border-primary/30 rounded-full text-foreground hover:border-primary hover:text-primary hover:bg-primary/5 transition-all cursor-pointer"
             >
               {tag}
             </motion.span>

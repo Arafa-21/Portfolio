@@ -54,11 +54,8 @@ export default function About() {
           className="text-center mb-12"
         >
           <h2 className=" text-4xl md:text-5xl font-bold tracking-widest">
-            <span className="text-gradient">A</span>
-            <span className="text-foreground">BOUT</span>
-            <span className="inline-block w-3 h-3 rounded-full bg-primary ml-2 animate-pulse" />
+            <span className="text-primary">ABOUT</span>
           </h2>
-
           <div className="flex items-center justify-center gap-2 mt-6 mb-4">
             <span className="w-8 h-0.5 bg-primary" />
             <span className="w-2 h-2 rounded-full bg-primary" />
@@ -75,7 +72,7 @@ export default function About() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center mb-12"
         >
-          <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+          <p className="text-foreground leading-relaxed max-w-2xl mx-auto">
             I'm a multidisciplinary creator specializing in{' '}
             <span className="text-primary">UI/UX designer, Frontend developer, and IoT Innovator</span>.
             I blend artistic flair with technical expertise and express ideas through motion and copy, blending
