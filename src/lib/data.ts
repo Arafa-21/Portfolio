@@ -95,24 +95,35 @@ export const experiences = [
   {
     id: 1,
     role: "UI/UX Design Intern",
-    company: "TheNextLeap",
+    company: "Metaloom",
     location: "Remote",
-    duration: "2023 - Present",
+    duration: "2025 - Present",
     description:
       "Designed user interfaces and experiences for web applications. Collaborated with cross-functional teams to deliver pixel-perfect designs.",
-    achievements: ["15+ UI Designs", "40% UX Improvement", "Design Sprints"],
+    achievements: ["5+ UI Designs", "100% UX Improvement", "Design Sprints"],
     gradient: "from-orange-500 to-red-500",
   },
   {
     id: 2,
-    role: "Content Creation Lead",
-    company: "Freelance",
-    location: "Remote",
-    duration: "2022 - 2023",
+    role: "Documentation Lead",
+    company: "FOSS",
+    location: "Campus-based",
+    duration: "2024 - present",
     description:
-      "Created and coordinated content across multiple platforms. Developed creative strategies for brand engagement.",
+      "Managed and curated documentation for open-source projects, transforming complex ideas into clear, contributor friendly content.",
     achievements: ["10+ Projects", "200% Growth", "Team Building"],
-    gradient: "from-blue-500 to-purple-500",
+    gradient: "from-orange-500 to-red-500",
+  },
+  {
+    id: 3,
+    role: "Design Lead",
+    company: "Pragya IEDC",
+    location: "Campus-based",
+    duration: "2024 - 2025",
+    description:
+      "Shaped the visual identity of Pragya IEDC by leading design efforts that brought campus innovation and ideas to life.",
+    achievements: ["10+ Projects", "200% Growth", "Team Building"],
+    gradient: "from-orange-500 to-red-500",
   },
 ];
 
